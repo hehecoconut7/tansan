@@ -4,239 +4,665 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACK SYSTEM</title>
+<title>쾌남학개론</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Black+Han+Sans&family=Gowun+Dodum&display=swap" rel="stylesheet">
+
 <style>
-* { box-sizing:border-box; }
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff45a5;
+  --blue: #2549b9;
+  --yellow: #fff15c;
+  --sky: #72c8ff;
+  --white: #fffdf5;
+  --black: #17152a;
+}
 
 body {
-  margin:0;
-  background:#080808;
-  color:#eee;
-  font-family:Arial,sans-serif;
+  margin: 0;
+  background: #a9e4f4;
+  color: var(--black);
+  font-family: 'Jua', sans-serif;
+  overflow-x: hidden;
 }
 
-header {
-  background:#111;
-  border-bottom:1px solid #d9ad24;
-  padding:22px 18px;
-}
-
-.logo {
-  color:#f2c52e;
-  font-size:12px;
-  letter-spacing:4px;
-}
-
-h1 {
-  font-size:25px;
-  letter-spacing:3px;
-  margin:12px 0 5px;
-}
-
-.status {
-  color:#999;
-  font-size:11px;
-}
-
-main {
-  max-width:750px;
-  margin:auto;
-  padding:20px;
-}
-
-.panel {
-  background:#111;
-  border:1px solid #333;
-  padding:18px;
-  margin-bottom:16px;
-  border-radius:5px;
-}
-
-h2 {
-  color:#f2c52e;
-  font-size:14px;
-  letter-spacing:2px;
-}
-
-.profile {
-  border-left:3px solid #e9bd29;
-  padding-left:14px;
-  margin-top:18px;
-}
-
-.name {
-  font-size:23px;
-  font-weight:bold;
-}
-
-.sub {
-  color:#aaa;
-  font-size:12px;
-  margin-top:7px;
-}
-
-.tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:15px;
-}
-
-.tag {
-  border:1px solid #80691e;
-  color:#e8c44c;
-  padding:6px 10px;
-  font-size:11px;
-}
-
-nav {
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin:15px 0;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .25;
+  background-image:
+    linear-gradient(90deg, transparent 49%, white 50%, transparent 51%),
+    linear-gradient(transparent 49%, white 50%, transparent 51%);
+  background-size: 65px 65px;
+  z-index: -1;
 }
 
 button {
-  background:#1a1a1a;
-  color:#ddd;
-  border:1px solid #444;
-  padding:11px 13px;
-  cursor:pointer;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-button.active, button:hover {
-  background:#d6ad29;
-  color:#080808;
-  border-color:#d6ad29;
+.main {
+  width: min(100%, 760px);
+  margin: auto;
+  padding: 18px;
 }
 
-.content {
-  background:#0b0b0b;
-  border:1px solid #333;
-  padding:18px;
-  min-height:130px;
-  line-height:1.9;
-  font-size:14px;
+.magazine {
+  background: var(--blue);
+  border: 5px solid white;
+  box-shadow: 7px 8px 0 #ff79b9;
+  padding: 15px;
+  position: relative;
 }
 
-.label {
-  color:#dabb50;
-  font-size:11px;
-  letter-spacing:2px;
-  margin-bottom:10px;
+.top-label {
+  text-align: center;
+  color: var(--yellow);
+  font-size: 15px;
+  letter-spacing: 4px;
+  margin: 5px;
 }
 
-footer {
-  text-align:center;
-  color:#666;
-  font-size:10px;
-  padding:30px;
-  letter-spacing:2px;
+.main-title {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: clamp(48px, 12vw, 88px);
+  text-align: center;
+  color: #ff4fae;
+  -webkit-text-stroke: 2px white;
+  text-shadow:
+    4px 5px 0 #a90070,
+    7px 8px 0 #17152a;
+  line-height: 1.15;
+  margin: 18px 0;
+  transform: rotate(-2deg);
 }
+
+.subtitle {
+  background: var(--yellow);
+  color: #25205d;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  transform: rotate(1deg);
+  margin: 20px 0;
+}
+
+.sticker {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #ff4da6;
+  color: white;
+  border: 3px solid white;
+  box-shadow: 3px 4px 0 #15152b;
+  transform: rotate(-5deg);
+  font-size: 16px;
+}
+
+.section {
+  background: var(--white);
+  border: 4px solid #17152a;
+  box-shadow: 5px 6px 0 #ff69b4;
+  padding: 18px;
+  margin: 24px 0;
+}
+
+.section-title {
+  display: inline-block;
+  background: var(--yellow);
+  padding: 8px 16px;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 25px;
+  transform: rotate(-2deg);
+  margin-bottom: 15px;
+}
+
+.section p {
+  font-family: 'Gowun Dodum', sans-serif;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.nav button {
+  border: 3px solid #17152a;
+  background: #ff56aa;
+  color: white;
+  font-size: 19px;
+  padding: 15px 5px;
+  box-shadow: 4px 5px 0 #17152a;
+  transition: .2s;
+}
+
+.nav button:nth-child(2) {
+  background: #fff15c;
+  color: #17152a;
+}
+
+.nav button:nth-child(3) {
+  background: #70caff;
+  color: #17152a;
+}
+
+.nav button:nth-child(4) {
+  background: #a9e98c;
+  color: #17152a;
+}
+
+.nav button:active {
+  transform: translate(3px, 4px);
+  box-shadow: 1px 1px 0 #17152a;
+}
+
+.content-page {
+  display: none;
+  animation: appear .3s ease;
+}
+
+.content-page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.yellow-note {
+  background: var(--yellow);
+  padding: 14px;
+  border: 2px dashed #17152a;
+  transform: rotate(1deg);
+  margin: 15px 0;
+}
+
+.blue-note {
+  background: #bceaff;
+  padding: 14px;
+  border: 2px solid #17152a;
+  margin: 15px 0;
+}
+
 </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">BLACK SYSTEM / ARCHIVE</div>
-  <h1>CHARACTER DATABASE</h1>
-  <div class="status">● SYSTEM ONLINE · RECORD ACCESSIBLE</div>
-</header>
+<div class="main">
+<div class="magazine">
 
-<main>
+<div class="top-label">
+★ SPECIAL LOVE EDITION ★ 1997
+</div>
 
-<section class="panel">
-  <h2>01 / CHARACTER PROFILE</h2>
+<h1 class="main-title">쾌남학개론</h1>
 
-  <div class="profile">
-    <div class="name">LOGAN VANCE</div>
-    <div class="sub">전술 요원 · 현장 지휘 담당 · 독립 작전팀</div>
-  </div>
+<div class="subtitle">
+네 명의 쾌남과 단 한 명의 주인공!
+</div>
 
-  <div class="tags">
-    <span class="tag">침착함</span>
-    <span class="tag">과묵함</span>
-    <span class="tag">책임감</span>
-    <span class="tag">관찰력</span>
-  </div>
-</section>
+<div style="text-align:center;">
+<span class="sticker">HOT ISSUE!</span>
+<span class="sticker" style="background:#68c9ff;color:#172052;transform:rotate(5deg);">
+LOVE ATTACK!
+</span>
+</div>
 
-<section class="panel">
-  <h2>02 / CHARACTER ARCHIVE</h2>
+<div class="section">
+<div class="section-title">WELCOME!</div>
+<p>
+세상에는 여러 종류의 남자가 있다.
+<br>
+그리고 이곳에는 유난히 솔직하고,
+유쾌하고, 거침없이 다가오는 남자들이 있다.
+<br><br>
+칭찬도 직설적이고 호감 표현도 숨기지 않는다.
+<br>
+좋아하면 좋아한다고 말하는 네 명의 쾌남.
+<br><br>
+그런데 하필이면 그들의 관심이
+전부 한 사람에게 향해버렸다.
+</p>
+</div>
 
-  <nav>
-    <button class="active" onclick="show('basic',this)">기본 정보</button>
-    <button onclick="show('personality',this)">성격</button>
-    <button onclick="show('traits',this)">특징</button>
-    <button onclick="show('habits',this)">습관</button>
-  </nav>
+<div class="nav">
+<button onclick="showPage('world')">📖 세계관</button>
+<button onclick="showPage('people')">💘 인물 도감</button>
+<button onclick="showPage('story')">💌 스토리</button>
+<button onclick="showPage('notice')">⭐ 열람 안내</button>
+</div>
 
-  <div class="content" id="content">
-    <div class="label">BASIC INFORMATION</div>
-    이름 : ㅋㅋ<br>
-    소속 : 작전팀<br>
-    직책 : 현당<br>
-    전문 분야 : 전
-  </div>
-</section>
+<!-- 세계관 -->
+<div id="world" class="content-page">
+<div class="section">
+<div class="section-title">WORLD ARCHIVE</div>
 
-<section class="panel">
-  <h2>03 / CHARACTER RECORD</h2>
-  <div class="content">
-    <div class="label">PERSONAL RECORD</div>
-    "말하지 않아도 알 수 있어.
-    하지만  안다고않아."
-    <br><br>
-    <span style="color:#dabb50">열람 상태 : 공개</span>
-  </div>
-</section>
+<h2>01. 평범하지 않은 캠퍼스</h2>
+<p>
+배경은 자유롭고 활기찬 분위기의 대학 캠퍼스.
+<br>
+학생들은 동아리, 축제, 수업, 아르바이트 등
+평범한 일상을 보내고 있다.
+<br><br>
+그중에서도 유난히 눈에 띄는 네 명의 남자.
+서로 다른 성격과 외형을 가졌지만
+공통점은 하나다.
+<br><br>
+모두 시원시원하고 호탕한 쾌남이라는 것.
+</p>
 
-</main>
+<div class="yellow-note">
+<strong>RULE 01.</strong><br>
+좋아하는 마음을 굳이 숨기지 않는다.
+</div>
 
-<footer>
-BLACK SYSTEM · CHARACTER ARCHIVE · 2026
-</footer>
+<div class="yellow-note">
+<strong>RULE 02.</strong><br>
+상대방에게 다가가는 것을 두려워하지 않는다.
+</div>
+
+<div class="yellow-note">
+<strong>RULE 03.</strong><br>
+장난과 농담은 좋아하지만 상대의 의사는 존중한다.
+</div>
+
+<h2>02. 이야기의 시작</h2>
+<p>
+어느 날, 주인공은 우연한 계기로 네 남자와
+차례로 엮이게 된다.
+<br><br>
+처음에는 단순한 친절이라고 생각했다.
+하지만 시간이 지날수록 그들의 관심은
+점점 노골적으로 변해간다.
+<br><br>
+아침에 마주치면 먼저 인사하고,
+옆자리를 자연스럽게 비워두고,
+사소한 일에도 함께 웃으려 한다.
+<br><br>
+네 사람 모두 주인공에게 적극적으로 다가오기 시작한다.
+</p>
+</div>
+</div>
+
+<!-- 인물 도감 -->
+<div id="people" class="content-page">
+
+<div class="section">
+<div class="section-title">CHARACTER FILE</div>
+<p>사진을 등록하고 인물 이름을 누르면 상세 정보를 확인할 수 있다.</p>
+</div>
+
+<div class="character-grid">
+
+<!-- 인물 1 -->
+<div class="character-card">
+<div class="photo-frame">
+<img id="photo1" src="" alt="인물 사진">
+<div id="placeholder1" class="photo-placeholder">
+PHOTO<br>01
+</div>
+</div>
+
+<label class="upload-btn">
+📷 사진 첨부
+<input type="file" accept="image/*" onchange="uploadPhoto(event,1)">
+</label>
+
+<button class="character-name" onclick="showCharacter(1)">
+강태오 ★
+</button>
+<div class="character-tag">#직진형 #호탕함</div>
+</div>
+
+<!-- 인물 2 -->
+<div class="character-card">
+<div class="photo-frame">
+<img id="photo2" src="" alt="인물 사진">
+<div id="placeholder2" class="photo-placeholder">
+PHOTO<br>02
+</div>
+</div>
+
+<label class="upload-btn">
+📷 사진 첨부
+<input type="file" accept="image/*" onchange="uploadPhoto(event,2)">
+</label>
+
+<button class="character-name" onclick="showCharacter(2)">
+서이준 ★
+</button>
+<div class="character-tag">#능글맞음 #여유로움</div>
+</div>
+
+<!-- 인물 3 -->
+<div class="character-card">
+<div class="photo-frame">
+<img id="photo3" src="" alt="인물 사진">
+<div id="placeholder3" class="photo-placeholder">
+PHOTO<br>03
+</div>
+</div>
+
+<label class="upload-btn">
+📷 사진 첨부
+<input type="file" accept="image/*" onchange="uploadPhoto(event,3)">
+</label>
+
+<button class="character-name" onclick="showCharacter(3)">
+윤시우 ★
+</button>
+<div class="character-tag">#활발함 #장난꾸러기</div>
+</div>
+
+<!-- 인물 4 -->
+<div class="character-card">
+<div class="photo-frame">
+<img id="photo4" src="" alt="인물 사진">
+<div id="placeholder4" class="photo-placeholder">
+PHOTO<br>04
+</div>
+</div>
+
+<label class="upload-btn">
+📷 사진 첨부
+<input type="file" accept="image/*" onchange="uploadPhoto(event,4)">
+</label>
+
+<button class="character-name" onclick="showCharacter(4)">
+차도하 ★
+</button>
+<div class="character-tag">#대담함 #솔직함</div>
+</div>
+
+</div>
+
+<!-- 인물 상세 소개 -->
+<div id="character-detail" class="section detail-box">
+<div class="section-title">PROFILE</div>
+<p>위의 인물 이름을 누르면 소개가 나타납니다.</p>
+</div>
+</div>
+
+<!-- 스토리 -->
+<div id="story" class="content-page">
+<div class="section">
+<div class="section-title">LOVE STORY</div>
+
+<h2>CHAPTER 01. 이상한 관심</h2>
+<p>
+처음부터 특별한 일은 없었다.
+<br><br>
+그저 평범하게 하루를 보내고 있었을 뿐인데,
+언제부턴가 주변에 네 사람이 자주 나타나기 시작했다.
+<br><br>
+"어, 여기 있었네? 찾았다."
+<br>
+"오늘도 같이 가자. 나 너랑 할 말 많은데."
+<br>
+"야, 너 웃는 거 보니까 나까지 기분 좋아진다."
+<br>
+"잠깐. 나도 너랑 이야기 좀 하자."
+<br><br>
+서로 다른 목소리, 서로 다른 방식.
+그런데 이상하게도 네 사람의 목적은 같았다.
+<br><br>
+바로 주인공과 조금이라도 더 가까워지는 것.
+</p>
+
+<div class="yellow-note">
+NEXT ISSUE : 네 명의 쾌남은 과연 누구에게 먼저 기회를 얻을까?
+</div>
+</div>
+</div>
+
+<!-- 안내 -->
+<div id="notice" class="content-page">
+<div class="section">
+<div class="section-title">USER GUIDE</div>
+<p>
+01. 세계관 버튼을 누르면 배경 설정을 볼 수 있다.
+<br><br>
+02. 인물 도감에서 사진 첨부를 누르면 원하는 사진을 등록할 수 있다.
+<br><br>
+03. 인물 이름을 누르면 상세 프로필이 열린다.
+<br><br>
+04. 스토리 버튼에서 이야기의 진행을 확인할 수 있다.
+<br><br>
+05. 사진은 현재 사용 중인 브라우저 화면에서 미리 볼 수 있다.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<style>
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.character-card {
+  background: white;
+  border: 3px solid #17152a;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 4px 5px 0 #ff75b9;
+}
+
+.photo-frame {
+  height: 210px;
+  background: #b9eaff;
+  border: 3px solid #17152a;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 35px;
+  color: #2850b9;
+  transform: rotate(-8deg);
+}
+
+.upload-btn {
+  display: block;
+  background: #fff15c;
+  border: 2px solid #17152a;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+.character-name {
+  background: #ff4fa9;
+  border: 2px solid #17152a;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: 3px 3px 0 #17152a;
+}
+
+.character-tag {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #3451a7;
+}
+
+.detail-box {
+  display: none;
+  animation: appear .3s ease;
+}
+
+.detail-box.show {
+  display: block;
+}
+
+.detail-box h2 {
+  font-family: 'Black Han Sans', sans-serif;
+  color: #ed3197;
+}
+
+.detail-box p {
+  white-space: pre-line;
+}
+
+@media(max-width:380px) {
+  .photo-frame {
+    height: 165px;
+  }
+
+  .character-tag {
+    font-size: 11px;
+  }
+}
+</style>
 
 <script>
-const data = {
-  basic: `
-    <div class="label">BASIC INFORMATION</div>
-    이름 : 로건 밴스<br>
-    소속 : 독립 작
-전팀<br>
-    직책 : 현장 지휘 담당<br>
-    전문 분야 : 전술 및 찰
-  `,
-  personality: `
-    <div class="label">PERSONALITY</div>
-    과묵하고 침착한 성격.<br>
-    처음 만나람에게 경계심이 강하다.<br>
-    신뢰가 쌓이면 책임감 있게대한다.<br>
-    감정을 말보다 행동으로 표현하는 편이다.
-  `,
-  traits: `
-    <div class="label">CHARACTER TRAITS</div>
-    뛰어난 판단력.<br>
-    상대방의 표알아차린다.<br>
-    자신의 속마음을는다.<br>
-    주변 상황을 파악하는 능력이 뛰어나다.
-  `,
-  habits: `
-    <div class="label">DAILY HABITS</div>
-    생각이 많아지면 손목ㅈ스ㅡ바시계를 확인한다.<br>
-    긴장하면 평소<br>
-    중요한 일을 앞두고 물건을 재확인한다.<br>
-    잠들기 슫시ㅡㅡ정리한다.
-  `
+function showPage(page) {
+  document.querySelectorAll('.content-page')
+    .forEach(el => el.classList.remove('active'));
+
+  document.getElementById(page).classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+const characters = {
+  1: {
+    name: '강태오',
+    age: '23세',
+    appearance: '짙은 흑발, 날렵한 눈매, 넓은 어깨와 시원한 인상.',
+    personality: '호탕하고 솔직하다. 생각한 것을 숨기지 않으며 사람들과 금방 친해진다.',
+    habit: '크게 웃으며 어깨를 두드리는 버릇이 있다. 누군가 곤란해하면 먼저 나선다.',
+    approach: '좋아하는 사람에게 먼저 다가가고, 망설임 없이 함께 시간을 보내자고 제안한다.',
+    quote: '“좋아하면 좋아한다고 하지, 그걸 왜 숨겨?”'
+  },
+
+  2: {
+    name: '서이준',
+    age: '24세',
+    appearance: '부드러운 갈색 머리, 선명한 눈동자, 여유로운 미소.',
+    personality: '능글맞고 유쾌하다. 분위기를 읽는 데 능숙하고 농담을 즐긴다.',
+    habit: '상대의 말에 장난스럽게 받아치고 재미있는 별명을 붙인다.',
+    approach: '자연스럽게 대화를 이어가며 상대가 편하게 웃을 수 있도록 만든다.',
+    quote: '“나 원래 이렇게까지 먼저 안 다가가는데. 너는 좀 다르네?”'
+  },
+
+  3: {
+    name: '윤시우',
+    age: '22세',
+    appearance: '밝은 금발, 맑은 눈매, 장난기 가득한 표정.',
+    personality: '활발하고 친화력이 좋다. 어디서든 사람들과 금세 어울린다.',
+    habit: '기분이 좋으면 휘파람을 불고, 재미있는 일이 생기면 가장 먼저 공유한다.',
+    approach: '사소한 일에도 함께하자고 제안하며 솔직하게 호감을 표현한다.',
+    quote: '“오늘 너랑 놀려고 일정 비워놨는데? 같이 가자!”'
+  },
+
+  4: {
+    name: '차도하',
+    age: '25세',
+    appearance: '은빛이 도는 회색 머리, 깊은 눈매, 차분하면서도 강렬한 인상.',
+    personality: '대담하고 담백하다. 무슨 일이든 시원하게 결정하고 뒤끝이 없다.',
+    habit: '상대의 말을 끝까지 들어주며 중요한 약속은 꼭 기억한다.',
+    approach: '돌려 말하지 않고 직접적인 칭찬과 진심 어린 말로 다가간다.',
+    quote: '“너랑 더 친해지고 싶어. 내일 시간 괜찮아?”'
+  }
 };
 
-function show(type,btn) {
-  document.getElementById('content').innerHTML=data[type];
-  document.querySelectorAll('nav button').forEach(b=>{
-    b.classList.remove('active');
+function showCharacter(id) {
+  const c = characters[id];
+
+  const detail = document.getElementById('character-detail');
+
+  detail.innerHTML = `
+    <div class="section-title">PROFILE FILE 0${id}</div>
+    <h2>${c.name}</h2>
+    <p>
+    <strong>나이</strong><br>${c.age}<br><br>
+    <strong>외형</strong><br>${c.appearance}<br><br>
+    <strong>성격</strong><br>${c.personality}<br><br>
+    <strong>습관</strong><br>${c.habit}<br><br>
+    <strong>주인공에게 다가가는 방식</strong><br>${c.approach}
+    </p>
+    <div class="yellow-note">
+    ${c.quote}
+    </div>
+    <button class="character-name"
+      onclick="document.getElementById('character-detail').classList.remove('show')">
+      닫기 ×
+    </button>
+  `;
+
+  detail.classList.add('show');
+
+  detail.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
   });
-  btn.classList.add('active');
+}
+
+function uploadPhoto(event, id) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith('image/')) {
+    alert('이미지 파일을 선택해 주세요!');
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const img = document.getElementById('photo' + id);
+    const placeholder = document.getElementById('placeholder' + id);
+
+    img.src = e.target.result;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+  };
+
+  reader.readAsDataURL(file);
 }
 </script>
 
