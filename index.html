@@ -200,8 +200,90 @@ button {
   margin: 15px 0;
 }
 
+/* 인물 도감 */
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.character-card {
+  background: white;
+  border: 3px solid #17152a;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 4px 5px 0 #ff75b9;
+  overflow: hidden;
+}
+
+.photo-frame {
+  height: 230px;
+  background: #b9eaff;
+  border: 3px solid #17152a;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-name {
+  background: #ff4fa9;
+  border: 2px solid #17152a;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: 3px 3px 0 #17152a;
+  margin-top: 10px;
+}
+
+.character-tag {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #3451a7;
+}
+
+.detail-box {
+  display: none;
+  animation: appear .3s ease;
+}
+
+.detail-box.show {
+  display: block;
+}
+
+.detail-box h2 {
+  font-family: 'Black Han Sans', sans-serif;
+  color: #ed3197;
+}
+
+.detail-box p {
+  white-space: pre-line;
+}
+
+@media(max-width:380px) {
+  .photo-frame {
+    height: 165px;
+  }
+
+  .character-tag {
+    font-size: 11px;
+  }
+
+  .character-card {
+    padding: 7px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <div class="main">
@@ -249,11 +331,14 @@ LOVE ATTACK!
 </div>
 
 <!-- 세계관 -->
+
 <div id="world" class="content-page">
+
 <div class="section">
 <div class="section-title">WORLD ARCHIVE</div>
 
 <h2>01. 평범하지 않은 캠퍼스</h2>
+
 <p>
 배경은 자유롭고 활기찬 분위기의 대학 캠퍼스.
 <br>
@@ -283,6 +368,7 @@ LOVE ATTACK!
 </div>
 
 <h2>02. 이야기의 시작</h2>
+
 <p>
 어느 날, 주인공은 우연한 계기로 네 남자와
 차례로 엮이게 된다.
@@ -301,110 +387,125 @@ LOVE ATTACK!
 </div>
 
 <!-- 인물 도감 -->
+
 <div id="people" class="content-page">
 
 <div class="section">
 <div class="section-title">CHARACTER FILE</div>
-<p>사진을 누르거나 교체하여 각 인물의 매력을 확인해 보세요.</p>
+<p>
+네 명의 쾌남을 소개합니다.
+<br>
+인물 이름을 누르면 상세 정보를 확인할 수 있다.
+</p>
 </div>
 
 <div class="character-grid">
 
-<!-- 인물 1: 강태오 -->
-<div class="character-card">
-<div class="photo-frame">
-<img id="photo1" src="1000022327.png" alt="강태오 사진" style="display: block;">
-<div id="placeholder1" class="photo-placeholder" style="display: none;">
-PHOTO<br>01
-</div>
-</div>
+<!-- 강태오 -->
 
-<label class="upload-btn">
-📷 사진 변경
-<input type="file" accept="image/*" onchange="uploadPhoto(event,1)">
-</label>
+<div class="character-card">
+
+<div class="photo-frame">
+<img
+src="data:image/jpeg;base64,여기에_강태오_사진데이터"
+alt="강태오">
+</div>
 
 <button class="character-name" onclick="showCharacter(1)">
 강태오 ★
 </button>
-<div class="character-tag">#직진형 #호탕함</div>
+
+<div class="character-tag">
+#직진형 #호탕함
 </div>
 
-<!-- 인물 2: 서이준 -->
+</div>
+
+<!-- 서이준 -->
+
 <div class="character-card">
-<div class="photo-frame">
-<img id="photo2" src="1000022331.png" alt="서이준 사진" style="display: block;">
-<div id="placeholder2" class="photo-placeholder" style="display: none;">
-PHOTO<br>02
-</div>
-</div>
 
-<label class="upload-btn">
-📷 사진 변경
-<input type="file" accept="image/*" onchange="uploadPhoto(event,2)">
-</label>
+<div class="photo-frame">
+<img
+src="data:image/jpeg;base64,여기에_서이준_사진데이터"
+alt="서이준">
+</div>
 
 <button class="character-name" onclick="showCharacter(2)">
 서이준 ★
 </button>
-<div class="character-tag">#능글맞음 #여유로움</div>
+
+<div class="character-tag">
+#능글맞음 #여유로움
 </div>
 
-<!-- 인물 3: 윤시우 -->
+</div>
+
+<!-- 윤시우 -->
+
 <div class="character-card">
-<div class="photo-frame">
-<img id="photo3" src="1000022332.png" alt="윤시우 사진" style="display: block;">
-<div id="placeholder3" class="photo-placeholder" style="display: none;">
-PHOTO<br>03
-</div>
-</div>
 
-<label class="upload-btn">
-📷 사진 변경
-<input type="file" accept="image/*" onchange="uploadPhoto(event,3)">
-</label>
+<div class="photo-frame">
+<img
+src="data:image/jpeg;base64,여기에_윤시우_사진데이터"
+alt="윤시우">
+</div>
 
 <button class="character-name" onclick="showCharacter(3)">
 윤시우 ★
 </button>
-<div class="character-tag">#활발함 #장난꾸러기</div>
+
+<div class="character-tag">
+#활발함 #장난꾸러기
 </div>
 
-<!-- 인물 4: 차도하 -->
+</div>
+
+<!-- 차도하 -->
+
 <div class="character-card">
-<div class="photo-frame">
-<img id="photo4" src="1000022330.png" alt="차도하 사진" style="display: block;">
-<div id="placeholder4" class="photo-placeholder" style="display: none;">
-PHOTO<br>04
-</div>
-</div>
 
-<label class="upload-btn">
-📷 사진 변경
-<input type="file" accept="image/*" onchange="uploadPhoto(event,4)">
-</label>
+<div class="photo-frame">
+<img
+src="data:image/jpeg;base64,여기에_차도하_사진데이터"
+alt="차도하">
+</div>
 
 <button class="character-name" onclick="showCharacter(4)">
 차도하 ★
 </button>
-<div class="character-tag">#대담함 #솔직함</div>
+
+<div class="character-tag">
+#대담함 #솔직함
+</div>
+
 </div>
 
 </div>
 
 <!-- 인물 상세 소개 -->
+
 <div id="character-detail" class="section detail-box">
+
 <div class="section-title">PROFILE</div>
-<p>위의 인물 이름을 누르면 소개가 나타납니다.</p>
+
+<p>
+위의 인물 이름을 누르면 소개가 나타납니다.
+</p>
+
 </div>
+
 </div>
 
 <!-- 스토리 -->
+
 <div id="story" class="content-page">
+
 <div class="section">
 <div class="section-title">LOVE STORY</div>
 
 <h2>CHAPTER 01. 이상한 관심</h2>
+
 <p>
 처음부터 특별한 일은 없었다.
 <br><br>
@@ -428,133 +529,39 @@ PHOTO<br>04
 <div class="yellow-note">
 NEXT ISSUE : 네 명의 쾌남은 과연 누구에게 먼저 기회를 얻을까?
 </div>
+
 </div>
 </div>
 
 <!-- 안내 -->
+
 <div id="notice" class="content-page">
+
 <div class="section">
 <div class="section-title">USER GUIDE</div>
+
 <p>
 01. 세계관 버튼을 누르면 배경 설정을 볼 수 있다.
 <br><br>
-02. 인물 도감에서 사진 변경을 누르면 원하는 사진으로 교체할 수 있다.
+02. 인물 도감에서 네 명의 사진과 이름을 확인할 수 있다.
 <br><br>
 03. 인물 이름을 누르면 상세 프로필이 열린다.
 <br><br>
 04. 스토리 버튼에서 이야기의 진행을 확인할 수 있다.
 <br><br>
-05. 사진은 현재 사용 중인 브라우저 화면에서 미리 볼 수 있다.
+05. 인물 사진은 HTML 코드 안에 포함되어 있다.
 </p>
+
 </div>
 </div>
+
 </div>
 </div>
-
-<style>
-.character-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.character-card {
-  background: white;
-  border: 3px solid #17152a;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 4px 5px 0 #ff75b9;
-}
-
-.photo-frame {
-  height: 210px;
-  background: #b9eaff;
-  border: 3px solid #17152a;
-  position: relative;
-  overflow: hidden;
-}
-
-.photo-frame img {
-  display: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.photo-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Black Han Sans', sans-serif;
-  font-size: 35px;
-  color: #2850b9;
-  transform: rotate(-8deg);
-}
-
-.upload-btn {
-  display: block;
-  background: #fff15c;
-  border: 2px solid #17152a;
-  padding: 8px;
-  margin: 10px 0;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.upload-btn input {
-  display: none;
-}
-
-.character-name {
-  background: #ff4fa9;
-  border: 2px solid #17152a;
-  color: white;
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  box-shadow: 3px 3px 0 #17152a;
-}
-
-.character-tag {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #3451a7;
-}
-
-.detail-box {
-  display: none;
-  animation: appear .3s ease;
-}
-
-.detail-box.show {
-  display: block;
-}
-
-.detail-box h2 {
-  font-family: 'Black Han Sans', sans-serif;
-  color: #ed3197;
-}
-
-.detail-box p {
-  white-space: pre-line;
-}
-
-@media(max-width:380px) {
-  .photo-frame {
-    height: 165px;
-  }
-
-  .character-tag {
-    font-size: 11px;
-  }
-}
-</style>
 
 <script>
+
 function showPage(page) {
+
   document.querySelectorAll('.content-page')
     .forEach(el => el.classList.remove('active'));
 
@@ -564,9 +571,11 @@ function showPage(page) {
     top: 0,
     behavior: 'smooth'
   });
+
 }
 
 const characters = {
+
   1: {
     name: '강태오',
     age: '23세',
@@ -606,26 +615,36 @@ const characters = {
     approach: '돌려 말하지 않고 직접적인 칭찬과 진심 어린 말로 다가간다.',
     quote: '“너랑 더 친해지고 싶어. 내일 시간 괜찮아?”'
   }
+
 };
 
 function showCharacter(id) {
+
   const c = characters[id];
 
   const detail = document.getElementById('character-detail');
 
   detail.innerHTML = `
     <div class="section-title">PROFILE FILE 0${id}</div>
+
     <h2>${c.name}</h2>
+
     <p>
     <strong>나이</strong><br>${c.age}<br><br>
+
     <strong>외형</strong><br>${c.appearance}<br><br>
+
     <strong>성격</strong><br>${c.personality}<br><br>
+
     <strong>습관</strong><br>${c.habit}<br><br>
+
     <strong>주인공에게 다가가는 방식</strong><br>${c.approach}
     </p>
+
     <div class="yellow-note">
     ${c.quote}
     </div>
+
     <button class="character-name"
       onclick="document.getElementById('character-detail').classList.remove('show')">
       닫기 ×
@@ -638,31 +657,9 @@ function showCharacter(id) {
     behavior: 'smooth',
     block: 'start'
   });
+
 }
 
-function uploadPhoto(event, id) {
-  const file = event.target.files[0];
-
-  if (!file) return;
-
-  if (!file.type.startsWith('image/')) {
-    alert('이미지 파일을 선택해 주세요!');
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e) {
-    const img = document.getElementById('photo' + id);
-    const placeholder = document.getElementById('placeholder' + id);
-
-    img.src = e.target.result;
-    img.style.display = 'block';
-    placeholder.style.display = 'none';
-  };
-
-  reader.readAsDataURL(file);
-}
 </script>
 
 </body>
