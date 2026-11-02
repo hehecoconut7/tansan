@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACK SYSTEM</title>
+<style>
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:#080808;
+  color:#eee;
+  font-family:Arial,sans-serif;
+}
+
+header {
+  background:#111;
+  border-bottom:1px solid #d9ad24;
+  padding:22px 18px;
+}
+
+.logo {
+  color:#f2c52e;
+  font-size:12px;
+  letter-spacing:4px;
+}
+
+h1 {
+  font-size:25px;
+  letter-spacing:3px;
+  margin:12px 0 5px;
+}
+
+.status {
+  color:#999;
+  font-size:11px;
+}
+
+main {
+  max-width:750px;
+  margin:auto;
+  padding:20px;
+}
+
+.panel {
+  background:#111;
+  border:1px solid #333;
+  padding:18px;
+  margin-bottom:16px;
+  border-radius:5px;
+}
+
+h2 {
+  color:#f2c52e;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.profile {
+  border-left:3px solid #e9bd29;
+  padding-left:14px;
+  margin-top:18px;
+}
+
+.name {
+  font-size:23px;
+  font-weight:bold;
+}
+
+.sub {
+  color:#aaa;
+  font-size:12px;
+  margin-top:7px;
+}
+
+.tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:15px;
+}
+
+.tag {
+  border:1px solid #80691e;
+  color:#e8c44c;
+  padding:6px 10px;
+  font-size:11px;
+}
+
+nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:15px 0;
+}
+
+button {
+  background:#1a1a1a;
+  color:#ddd;
+  border:1px solid #444;
+  padding:11px 13px;
+  cursor:pointer;
+}
+
+button.active, button:hover {
+  background:#d6ad29;
+  color:#080808;
+  border-color:#d6ad29;
+}
+
+.content {
+  background:#0b0b0b;
+  border:1px solid #333;
+  padding:18px;
+  min-height:130px;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.label {
+  color:#dabb50;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+footer {
+  text-align:center;
+  color:#666;
+  font-size:10px;
+  padding:30px;
+  letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BLACK SYSTEM / ARCHIVE</div>
+  <h1>CHARACTER DATABASE</h1>
+  <div class="status">● SYSTEM ONLINE · RECORD ACCESSIBLE</div>
+</header>
+
+<main>
+
+<section class="panel">
+  <h2>01 / CHARACTER PROFILE</h2>
+
+  <div class="profile">
+    <div class="name">LOGAN VANCE</div>
+    <div class="sub">전술 요원 · 현장 지휘 담당 · 독립 작전팀</div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">침착함</span>
+    <span class="tag">과묵함</span>
+    <span class="tag">책임감</span>
+    <span class="tag">관찰력</span>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>02 / CHARACTER ARCHIVE</h2>
+
+  <nav>
+    <button class="active" onclick="show('basic',this)">기본 정보</button>
+    <button onclick="show('personality',this)">성격</button>
+    <button onclick="show('traits',this)">특징</button>
+    <button onclick="show('habits',this)">습관</button>
+  </nav>
+
+  <div class="content" id="content">
+    <div class="label">BASIC INFORMATION</div>
+    이름 : ㅋㅋ<br>
+    소속 : 작전팀<br>
+    직책 : 현당<br>
+    전문 분야 : 전
+  </div>
+</section>
+
+<section class="panel">
+  <h2>03 / CHARACTER RECORD</h2>
+  <div class="content">
+    <div class="label">PERSONAL RECORD</div>
+    "말하지 않아도 알 수 있어.
+    하지만  안다고않아."
+    <br><br>
+    <span style="color:#dabb50">열람 상태 : 공개</span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+BLACK SYSTEM · CHARACTER ARCHIVE · 2026
+</footer>
+
+<script>
+const data = {
+  basic: `
+    <div class="label">BASIC INFORMATION</div>
+    이름 : 로건 밴스<br>
+    소속 : 독립 작
+전팀<br>
+    직책 : 현장 지휘 담당<br>
+    전문 분야 : 전술 및 찰
+  `,
+  personality: `
+    <div class="label">PERSONALITY</div>
+    과묵하고 침착한 성격.<br>
+    처음 만나람에게 경계심이 강하다.<br>
+    신뢰가 쌓이면 책임감 있게대한다.<br>
+    감정을 말보다 행동으로 표현하는 편이다.
+  `,
+  traits: `
+    <div class="label">CHARACTER TRAITS</div>
+    뛰어난 판단력.<br>
+    상대방의 표알아차린다.<br>
+    자신의 속마음을는다.<br>
+    주변 상황을 파악하는 능력이 뛰어나다.
+  `,
+  habits: `
+    <div class="label">DAILY HABITS</div>
+    생각이 많아지면 손목ㅈ스ㅡ바시계를 확인한다.<br>
+    긴장하면 평소<br>
+    중요한 일을 앞두고 물건을 재확인한다.<br>
+    잠들기 슫시ㅡㅡ정리한다.
+  `
+};
+
+function show(type,btn) {
+  document.getElementById('content').innerHTML=data[type];
+  document.querySelectorAll('nav button').forEach(b=>{
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
